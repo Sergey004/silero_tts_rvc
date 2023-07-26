@@ -8,3 +8,7 @@ An extension to [oobabooga's textgen-webui](https://github.com/oobabooga/text-ge
 Input from TextGen > Silero TTS > Magic of RVC > To chat history
 
 Technically it's hijacking the audio from Silero TTS and redirecting it to RVC
+
+## File to be downloaded and put in the root of the extension.
+
+[hubert_base.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/hubert_base.pt)
