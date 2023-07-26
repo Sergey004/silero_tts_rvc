@@ -6,9 +6,9 @@ venv/
 .venv/
 .vscode
 repositories
-outputs/
+outputs/*
 RVC
-outputs_temp/
+outputs_temp/*
 *RVC*
 Retrieval-based-Voice-Conversion-WebUI/
 *Retrieval-based-Voice-Conversion-WebUI*
