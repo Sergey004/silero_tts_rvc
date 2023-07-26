@@ -1,0 +1,13 @@
+ipython
+num2words
+omegaconf
+pydub
+PyYAML
+torchcrepe==0.0.20
+audioread
+Werkzeug
+praat-parselmouth>=0.4.2
+ffmpeg-python>=0.2.0
+pyworld==0.3.2
+numba==0.56.4
+numpy==1.23.5
