@@ -1,0 +1,15 @@
+user_data
+*pycache*
+*/*pycache*
+*/*/pycache*
+venv/
+.venv/
+.vscode
+repositories
+outputs/
+RVC
+outputs_temp/
+*RVC*
+Retrieval-based-Voice-Conversion-WebUI/
+*Retrieval-based-Voice-Conversion-WebUI*
+*Retrieval-based-Voice-Conversion-WebUI*/
