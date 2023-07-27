@@ -19,7 +19,7 @@ from extensions.silero_tts_rvc.rvc_infer import get_vc, vc_single
 torch._C._jit_set_profiling_mode(False)
 
 
-model_path = "extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/weights/glamrockfreddy.pth"
+model_path = "extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/weights/glamrockfreddy.pth" #Replace with your own
 device="cuda:0"
 is_half=True
 get_vc(model_path, device, is_half)
@@ -30,7 +30,7 @@ rms_mix_rate = 0.25
 protect = 0.33
 resample_sr = 48000
 f0method = "harvest" #harvest or pm
-index_path = "extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/logs/infamous_miku_v2/added_IVF2983_Flat_nprobe_1_infamous_miku_v2_v2.index"
+index_path = "extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/logs/glamrockfreddy/added_IVF1025_Flat_nprobe_1_glamrockfreddy_v2" #Replace with your own
 
 
 params = {
