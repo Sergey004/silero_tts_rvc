@@ -5,6 +5,9 @@ An extension to [oobabooga's textgen-webui](https://github.com/oobabooga/text-ge
 
 At this moment paths for .pth and .index is hard-coded, but you can edit this paths
 
+## How install this
+``git clone --recurse-submodules https://github.com/Sergey004/silero_tts_rvc``
+
 ## How it works
 
 Input from TextGen > Silero TTS > Magic of RVC > To chat history
@@ -14,6 +17,8 @@ Technically it's hijacking the audio from Silero TTS and redirecting it to RVC
 ## File to be downloaded and put in the root (or root of your hard drive, idk where this file loads) of the extension.
 
 [hubert_base.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/hubert_base.pt)
+
+
 
 Credit to [serp-ai](https://github.com/serp-ai) for making rvc_infer.py, a file that made the impossible possible. 
 
