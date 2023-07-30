@@ -6,7 +6,9 @@ An extension to [oobabooga's textgen-webui](https://github.com/oobabooga/text-ge
 At this moment paths for .pth and .index is hard-coded, but you can edit this paths
 
 ## How install this
-``git clone --recurse-submodules https://github.com/Sergey004/silero_tts_rvc``
+``git clone --recurse-submodules https://github.com/Sergey004/silero_tts_rvc extensions/silero_tts_rvc
+  pip install -r extensions/silero_tts_rvc/requirements.txt
+``
 
 ## How it works
 
