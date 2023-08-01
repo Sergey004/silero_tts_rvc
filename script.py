@@ -176,7 +176,7 @@ def setup():
 
 def ui():
     # Gradio elements
-    with gr.Accordion("Silero TTS"):
+    with gr.Accordion("Silero TTS + RVC"):
         with gr.Row():
             activate = gr.Checkbox(value=params['activate'], label='Activate TTS')
             autoplay = gr.Checkbox(value=params['autoplay'], label='Play TTS automatically')
