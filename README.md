@@ -20,6 +20,9 @@ Technically it's hijacking the audio from Silero TTS and redirecting it to RVC
 
 [hubert_base.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/hubert_base.pt)
 
+Download this to RVC folder (if you want use rmvpe)
+[rmvpe.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/rmvpe.pt)
+
 
 
 Credit to [serp-ai](https://github.com/serp-ai) for making rvc_infer.py, a file that made the impossible possible. 
