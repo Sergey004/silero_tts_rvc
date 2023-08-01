@@ -6,6 +6,10 @@ sys.path.append(os.path.join(now_dir,"RVC"))
 
 import time
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Read .env file
+load_dotenv()
 
 import gradio as gr
 import torch
@@ -13,24 +17,25 @@ import torch
 from extensions.silero_tts import tts_preprocessor
 from modules import chat, shared
 from modules.utils import gradio
-from  scipy.io import wavfile 
+from scipy.io import wavfile 
 
 from extensions.silero_tts_rvc.rvc_infer import get_vc, vc_single
 torch._C._jit_set_profiling_mode(False)
 
 
-model_path = "extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/weights/glamrockfreddy.pth" #Replace with your own
+# RVC Section
+rvc_model_path = Path(os.environ.get('RVC_MODEL_PATH', 'extensions/bark_rvc_tts/Retrieval-based-Voice-Conversion-WebUI/weights/')) #Replace with your own
 device="cuda:0"
 is_half=True
-get_vc(model_path, device, is_half)
+
 index_rate = 0.75
-f0up_key = -6
+f0up_key = 0
 filter_radius = 3
 rms_mix_rate = 0.25
 protect = 0.33
-resample_sr = 48000
-f0method = "harvest" #harvest or pm
-index_path = "extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/logs/glamrockfreddy/added_IVF1025_Flat_nprobe_1_glamrockfreddy_v2" #Replace with your own
+resample_sr = "48000"
+f0method = os.environ.get("F0_METHOD", 'rmvpe').lower() #harvest or pm
+rvc_index_path = Path(os.environ.get('RVC_INDEX_PATH', 'extensions/bark_rvc_tts/Retrieval-based-Voice-Conversion-WebUI/logs/')) #Replace with your own
 
 
 params = {
@@ -149,7 +154,7 @@ def output_modifier(string, state):
         silero_input = f'<speak>{prosody}{xmlesc(string)}</prosody></speak>'
         model.save_wav(ssml_text=silero_input, speaker=params['speaker'], sample_rate=int(params['sample_rate']), audio_path=str(output_file))
 
-        wav_opt = vc_single(0,output_file,f0up_key,None,f0method,index_path,index_rate, filter_radius=filter_radius, resample_sr=resample_sr, rms_mix_rate=rms_mix_rate, protect=protect)
+        wav_opt = vc_single(0,output_file,f0up_key,None,f0method,rvc_index_path,index_rate, filter_radius=filter_radius, resample_sr=resample_sr, rms_mix_rate=rms_mix_rate, protect=protect)
 
         wavfile.write(Path(f'extensions/silero_tts_rvc/outputs/{state["character_menu"]}_{int(time.time())}.wav'), resample_sr, wav_opt)
 
@@ -166,6 +171,7 @@ def output_modifier(string, state):
 def setup():
     global model
     model = load_model()
+    get_vc(rvc_model_path, device, is_half)
 
 
 def ui():
