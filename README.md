@@ -16,7 +16,7 @@ Input from TextGen > Silero TTS > Magic of RVC > To chat history
 
 Technically it's hijacking the audio from Silero TTS and redirecting it to RVC
 
-## File to be downloaded and put in the root (or root of your hard drive, idk where this file loads) of the extension.
+## File to be downloaded and put in the root of extension (or root of your hard drive, idk where this file loads) of the extension.
 
 [hubert_base.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/hubert_base.pt)
 
