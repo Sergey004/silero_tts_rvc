@@ -4,6 +4,7 @@ now_dir = "extensions/silero_tts_rvc"
 sys.path.append(now_dir)
 sys.path.append(os.path.join(now_dir,"RVC"))
 
+import random
 import time
 from pathlib import Path
 from dotenv import load_dotenv
@@ -172,6 +173,35 @@ def setup():
     global model
     model = load_model()
     get_vc(rvc_model_path, device, is_half)
+
+
+def random_sentence():
+    with open(Path("extensions/silero_tts/harvard_sentences.txt")) as f:
+        return random.choice(list(f))
+ 
+
+def voice_preview(preview_text):
+    global model, current_params, streaming_state
+
+    for i in params:
+        if params[i] != current_params[i]:
+            model = load_model()
+            current_params = params.copy()
+            break
+
+    string = tts_preprocessor.preprocess(preview_text or random_sentence())
+
+    output_file = Path('extensions/silero_tts/outputs/voice_preview.wav')
+    prosody = f"<prosody rate=\"{params['voice_speed']}\" pitch=\"{params['voice_pitch']}\">"
+    silero_input = f'<speak>{prosody}{xmlesc(string)}</prosody></speak>'
+    model.save_wav(ssml_text=silero_input, speaker=params['speaker'], sample_rate=int(params['sample_rate']), audio_path=str(output_file))
+
+    return f'<audio src="file/{output_file.as_posix()}?{int(time.time())}" controls autoplay></audio>'
+
+
+def custom_css():
+    path_to_css = Path(__file__).parent.resolve() / 'style.css'
+    return open(path_to_css, 'r').read()
 
 
 def ui():

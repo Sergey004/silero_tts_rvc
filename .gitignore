@@ -9,3 +9,4 @@ repositories
 outputs/*
 outputs_temp/*
 hubert_base.pt
+rmvpe.pt
