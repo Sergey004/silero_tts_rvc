@@ -25,7 +25,7 @@ torch._C._jit_set_profiling_mode(False)
 
 
 # RVC Section
-rvc_model_path = Path(os.environ.get('RVC_MODEL_PATH', 'extensions/bark_rvc_tts/Retrieval-based-Voice-Conversion-WebUI/weights/')) #Replace with your own
+rvc_model_path = Path(os.environ.get('RVC_MODEL_PATH', 'extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/weights/')) #Replace with your own
 device="cuda:0"
 is_half=True
 
@@ -36,7 +36,7 @@ rms_mix_rate = 0.25
 protect = 0.33
 resample_sr = "48000"
 f0method = os.environ.get("F0_METHOD", 'rmvpe').lower() #harvest or pm
-rvc_index_path = Path(os.environ.get('RVC_INDEX_PATH', 'extensions/bark_rvc_tts/Retrieval-based-Voice-Conversion-WebUI/logs/')) #Replace with your own
+rvc_index_path = Path(os.environ.get('RVC_INDEX_PATH', 'extensions/silero_tts_rvc/Retrieval-based-Voice-Conversion-WebUI/logs/')) #Replace with your own
 
 
 params = {
