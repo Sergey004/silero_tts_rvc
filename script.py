@@ -144,7 +144,7 @@ def output_modifier(string, state):
         return string
 
     original_string = string
-    string = tts_preprocessor.preprocess(string)
+    string = tts_preprocessor.preprocess(html.unescape(string))
 
     if string == '':
         string = '*Empty reply, try regenerating*'
